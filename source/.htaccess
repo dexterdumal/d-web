@@ -1,0 +1,37 @@
+#Gzip
+<ifmodule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript
+</ifmodule>
+#End Gzip
+<IfModule mod_rewrite.c>
+	Options +FollowSymLinks
+	
+	RewriteEngine on
+
+	RewriteCond %{REQUEST_FILENAME} !^(.+)\.css$
+	RewriteCond %{REQUEST_FILENAME} !^(.+)\.gif$
+	RewriteCond %{REQUEST_FILENAME} !^(.+)\.jpg$
+	RewriteCond %{REQUEST_FILENAME} !^(.+)\.png$
+	RewriteCond %{REQUEST_FILENAME} !^(.+)\.js$
+	RewriteCond %{REQUEST_FILENAME} !^(.+)\.php$
+	RewriteCond %{REQUEST_FILENAME} !special.zip$
+	
+	#RewriteCond %{REQUEST_URI} "/content"
+	#RewriteCond %{REQUEST_URI} "/content/pages/"
+	#RewriteCond %{REQUEST_URI} "/files"
+	#RewriteCond %{REQUEST_URI} "/files/upload/"
+	#RewriteCond %{REQUEST_URI} "/includes"
+	#RewriteCond %{REQUEST_URI} "/includes/ajax.php"
+	#RewriteCond %{REQUEST_URI} "/scripts/"
+	
+	#Página
+	#padrao de sequencia: raiz/area/acao/parametro A /parametro B
+	RewriteRule ^([a-z0-9-]+)/?([a-z0-9-]+)?/?([a-z0-9-]+)?/?([a-z0-9-]+)?/?([a-z0-9-]+)? index.php?q=$1/$2/$3/$4/$5 [NC,QSA]
+	
+	#RewriteRule ^([a-z0-9-]+)? index.php?q=$1 [L]
+	#^([a-z0-9-]+)/([a-z0-9-]+)/([0-9]+)/?$ 
+	
+	#RewriteCond %{HTTP_HOST} ^pinc.ufrj.br[nc]
+	#RewriteRule ^(.*)$ http://www.pinc.ufrj.br/$1 [r=301,nc]
+
+</IfModule>

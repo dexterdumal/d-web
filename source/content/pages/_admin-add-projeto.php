@@ -1,0 +1,108 @@
+<?php
+	global $msg;
+	if(isset($_POST['btnEnviar'])){
+	print "<pre>";print_r($_POST);print "</pre>";
+		$dadosForm = $_POST;
+		$nomesCampos = Array("nome_projeto"=>"Nome do projeto","departamento"=>"Departamento","assunto"=>"Assunto","descricao"=>"Descrição","vagas_disponiveis"=>"Vagas Disponíveis"); 
+		$security = new Security();
+		$msg = $security->validarPreenchimento($nomesCampos,$dadosForm);
+		if($msg['status']=='true'){
+			$pinc = new Pinc();
+			$dadosFormLimpo = Security::antiInjectionArray($dadosForm);
+			$msg = $pinc->cadastrarProjeto($dadosFormLimpo);
+			if($msg['status']==='true'){
+				$dadosForm = Array("nome_projeto"=>"","departamento"=>"","assunto"=>"","descricao"=>"","vagas_disponiveis"=>""); 
+			}
+		}
+	}else{
+		$dadosForm = Array("nome_projeto"=>"","departamento"=>"","assunto"=>"","descricao"=>"","vagas_disponiveis"=>""); 
+	}
+	extract($dadosForm);
+?>
+<h2 class="titulo-internas">Novo Projeto</h2>
+<?php if($msg['msg']!=""):?>
+	<div id="msg" class="<?php print $msg['class'];?>"><?php print $msg['msg'];?></div>
+<?php endif;?>
+<form id="add-projeto" method="post" action="<?php print args;?>">
+	<fieldset id="dados-projeto">
+		<legend>Dados do Projeto</legend>
+		<p><label for="nome-projeto">Nome do Projeto</label><input type="text" name="nome_projeto" id="nome-projeto" size="80" maxlength="300" value="<?php print $nome_projeto; ?>"/></p>
+		<p><label for="departamento">Departamento</label><input type="text" name="departamento" id="departamento" size="60" maxlength="100" value="<?php print $departamento; ?>"/></p>
+		<p><label for="assunto">Assunto</label><input type="text" name="assunto" id="assunto" size="80" maxlength="200" value="<?php print $assunto; ?>"/></p>
+		<p><label for="descricao">Descrição</label><textarea name="descricao" id="descricao" rows="3" cols="80" maxlength="500"><?php print $descricao; ?></textarea><span id="count-chars"><strong>500</strong> caracteres restantes</span><span class="legend">descreva seu projeto em até 1000 caracteres</span></p>
+		<p><label for="vagas-disponiveis">Vagas Disponíveis</label><input type="text" name="vagas_disponiveis" id="vagas-disponiveis" size="10" maxlength="4" value="<?php print $vagas_disponiveis; ?>"/></p>
+	</fieldset>
+	<fieldset id="dados-professor">
+		<legend>Professores atuando neste projeto</legend>
+		<table id="lista-professores-cadastrados" class="tabela-simples">
+			<thead><tr><th>Nome</th><th>E-mail</th><th>Telefone</th><th>ID Lattes</th><th></th></tr></thead>
+			<tbody><tr><td colspan="5">Nenhum professor cadastrado até o momento.</td></tr></tbody>
+		</table>
+		<p><label for="nome-professor">Nome do Professor:</label><input type="text" name="nome_professor[]" id="nome-professor" size="90" maxlength="100" class="required-field" /></p>
+		<p class="inline"><label for="email">E-mail:</label><input type="text" name="email[]" id="email" size="50" maxlength="60"  class="required-field" /></p>
+		<p class="inline"><label for="telefone">Telefone:</label><input type="text" name="telefone[]" id="telefone" size="15" maxlength="11" /></p>
+		<p><label for="lattes">ID Lattes:</label><input type="text" name="lattes[]" id="lattes" size="20" maxlength="16" class="required-field" /></p>
+		<p><input type="button" name="btnAddProfessor" id="btn-add-professor" class="btn submit" value="Adicionar Professor"/></p>
+	</fieldset>
+	<p>
+		<input type="button" name="btnEnviarForm" id="btn-add-projeto" class="btn submit disabled" value="salvar alterações"/>
+		<input type="submit" name="btnEnviar" id="btn-submit-form" class="oculto" value="save" />
+	</p>
+</form>
+<script type="text/javascript"> 
+//<![CDATA[
+	$(document).ready(function(){
+		var numProfessores = 0;
+		var indexArrayProfessores = 0;
+		$("#add-projeto").validationEngine();
+		
+		$("#add-projeto #btn-add-projeto").click(function(e){
+			// For IE:
+			//if ($.browser.msie) e.returnValue = false;
+			// Otherwise: 
+			//if(e.preventDefault) e.preventDefault();
+			if(numProfessores==0){
+				$(this).validationEngine('showPrompt', 'Adicione, pelo menos um professor neste projeto', 'error');
+				$("#dados-professor").effect("highlight", {}, 3000);
+				//numProfessores++;
+			}else{
+			   $("#btn-submit-form").click(); 
+			}
+		});
+		
+		$("#btn-add-professor").click(function(){
+			var nome_professor = $("#dados-professor #nome-professor").val();
+			var email = $("#dados-professor #email").val();
+			var telefone = $("#dados-professor #telefone").val();
+			var id_lattes = $("#dados-professor #lattes").val();
+			var htmlRetorno = "<tr>";
+			if((nome_professor=="")||(email=="")||(id_lattes=="")){
+				destacarCamposNaoPreenchidos("add-projeto #dados-professor");
+				alert('Todos os campos em vermelho deverão ser informados');
+			}else{
+				htmlRetorno += "<td>"+nome_professor+"<input type='hidden' name='dados_professor["+indexArrayProfessores+"][nome_professor]' value='"+nome_professor+"'/></td>";
+				htmlRetorno += "<td>"+email+"<input type='hidden' name='dados_professor["+indexArrayProfessores+"][email]' value='"+email+"'/></td>";
+				htmlRetorno += "<td>"+telefone+"<input type='hidden' name='dados_professor["+indexArrayProfessores+"][telefone]' value='"+telefone+"'/></td>";
+				htmlRetorno += "<td>"+id_lattes+"<input type='hidden' name='dados_professor["+indexArrayProfessores+"][id_lattes]' value='"+id_lattes+"'/></td>";
+				htmlRetorno += "<td><a href='' title='remover este professor' class='link-remover-professor remove'></a></td>";
+				htmlRetorno += "</tr>";
+				if(numProfessores==0){
+				   $("#lista-professores-cadastrados tbody").html(htmlRetorno);
+				   $("#btn-add-projeto").removeClass("disabled");
+				}else{
+				   $("#lista-professores-cadastrados tbody").append(htmlRetorno);
+				}
+				numProfessores++;
+				indexArrayProfessores++;
+			}
+		});
+		
+		$("#lista-professores-cadastrados tbody .link-remover-professor").live('click', function(e){
+			e.preventDefault();
+			$(this).parent().parent().remove();
+			numProfessores--;
+			if(numProfessores==0){$("#btn-add-projeto").addClass("disabled");}
+		});
+	});
+//]]>
+</script>

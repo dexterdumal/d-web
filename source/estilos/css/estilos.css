@@ -1,0 +1,532 @@
+*{
+	font-family: Trebuchet MS, Helvetica, Verdana!important;
+	letter-spacing: 0.01em;
+}
+html, body{
+    background-color: #CEE8FC;
+    color: #444444;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+hr{
+    border: medium none;
+	border-bottom: 1px solid #DDE9CA;
+    clear: both;
+    height: 10px;
+    margin: 5px 0;
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
+#principal{
+    margin: 0 auto;
+    width: 1020px;
+	background-color:#eeeeee
+}
+#topo{
+    background: url("../imagens/bg-topo.jpg") no-repeat scroll left top transparent;
+    height: 25px;
+    margin-bottom: 15px;
+    padding: 0 12px 15px;
+    width: 996px;
+}
+#topo a img{
+    float: left;
+}
+#topo h1 a{
+    /*background: url("../imagens/texto-h1-topo.png") no-repeat scroll left top transparent;*/
+    color: #FFFFFF;
+    float: left;
+    font-size: 33px;
+    font-weight: bold;
+	line-height: 38px;
+    /*height: 140px;
+    margin: 0 10px;*/
+    /*text-indent: -5000px;*/
+    width: 150px;
+}
+#topo h1 a:hover{
+	text-decoration: none;
+}
+#topo #box-login{
+    float: right;
+    margin-top: 10px;
+}
+#topo #box-login .welcome-message{
+	font-weight: bold;
+}
+#topo #box-login a{
+	color: #FF2F00;
+	font-weight: bold;
+	margin-left: 10px;
+}
+#topo #box-login label{
+	display: inline;
+	font-size: 13px;
+}
+#topo #box-login input.text{
+	display: inline;
+	border-radius: 1px;
+    font-size: 13px;
+    text-transform: none;
+}
+#conteudo{
+    min-height: 300px;
+}
+#conteudo #content{
+    background-color: #FFFFFF;
+    float: left;
+    margin: 0 10px;
+    padding: 10px;
+    width: 980px;
+	min-height: 300px;
+}
+#conteudo .inline,
+#detalhes-content .inline{
+	float: left;
+	margin-right:10px!important;
+}
+#conteudo .inline.first,
+#detalhes-content .inline.first{
+	border-right: 1px solid #888888;
+	padding-right:10px;
+}
+#detalhes-content h2{
+	color: #EE8100;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#rodape{
+    background-color: #006400;
+    clear: both;
+    color: #FFFFFF;
+    padding: 5px;
+}
+
+/*Estilos Menu Principal (Esquerda)*/
+#box-menu-principal{
+    float: left;
+    width: 160px;
+}
+ul#menu-principal{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+ul#menu-principal li{
+    background-color: #064373;
+    margin: 1px 0;
+}
+ul#menu-principal li.first{
+    margin: 0;
+}
+ul#menu-principal li a{
+    background: url("../imagens/bg-item-menu.png") repeat scroll left top transparent;
+    color: #FFFFFF;
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #000000;
+}
+ul#menu-principal li a.active{
+	font-weight:bold;
+	color: #FFA200;
+}
+ul#menu-principal li a.sub-item{
+	padding-left:30px;
+}
+ul#menu-principal li a:hover{
+	background: url("../imagens/bg-item-menu.png") repeat scroll left bottom transparent;
+	color:#ffa200;
+}
+
+h2.titulo-internas,
+h3.subtitulo-internas{
+	display: block;
+    font-weight: bold;
+    text-align: right;
+    text-transform: uppercase;
+}
+h2.titulo-internas{
+    font-size: 20px;
+	color: #FF6600;
+}
+h3.subtitulo-internas{
+	font-size: 16px;
+	color: #006DB5;
+}
+.lista-professores-projeto h3{
+    color: #006400;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+/*Estilos de formulário*/
+form h2{
+	font-size:16px;
+	font-weight:bold;
+}
+form strong{
+	font-weight: bold;
+}
+strong.big{
+    color: #DD0000;
+    font-size: 20px;
+}
+fieldset{
+	border:1px solid #006400;
+	padding: 15px;
+}
+fieldset.preview-form{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+fieldset.finish{
+	font-size: 16px;
+    text-align: center;
+}
+fieldset.preview-form label{
+    color: #999999;
+    text-transform: capitalize;
+}
+span.legend {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+	margin-top: 0;
+}
+fieldset legend{
+    color: #EE8100;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+input, 
+textarea,
+select{
+	/*background-color: #FFFFFF;*/
+    border: 1px solid #006400;
+    border-radius: 1px 1px 1px 1px;
+    font-size: 15px;
+	margin-right: 10px;
+	text-transform:uppercase;
+}
+.text{ background: url("../imagens/bg-input.png") repeat-x scroll left top transparent; }
+/*input.btn,
+a.btn{
+    background-color: #094B7D;
+    border: medium none;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 2px 2px 4px 2px #333333;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0;
+    padding: 15px;
+	text-decoration:none;
+    white-space: nowrap;
+}
+input.btn:active
+a.btn:active{
+    background-color: #063457;
+    box-shadow: none;
+}*/
+input.btn,
+a.btn{
+    background-color: #006400;
+    border-radius: 3px;
+    box-shadow: 2px 2px 4px -1px #333333;
+    color: #FFFFFF;
+	cursor: pointer;
+    font-size: 12px;
+	font-weight: normal;
+    margin: 0;
+    padding: 2px;
+}
+input.btn:active,
+a.btn:active{
+	background-color: #2a7d2a;
+    box-shadow: 2px 2px 4px -3px #333333;
+}
+a.btn:hover{
+	background-color:#2E6B99;
+}
+.btn.submit{
+    float: right;
+    margin-top: 20px;
+}
+label{
+	color:#222222;
+    display: block;
+    font-size: 17px;
+    margin-top: 15px;
+}
+.centralizado{text-align:center!important;}
+.links-export{
+	text-align:right!important;
+	padding: 10px 0;
+}
+.btn-solto {    
+    display: block;
+    margin: 20px auto !important;
+    padding: 15px !important;
+    width: 200px;
+}
+span.legenda{}
+a.link-menor{
+	font-size:14px;
+}
+/*Estilos dos box de msg*/
+
+#msg{
+    border-radius: 5px;
+    color: #222222;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+#msg.sucesso{
+	background-color:#90FC9D;
+	border:1px solid #5AA162;
+}
+
+#msg.erro{
+	background-color:#FC9090;
+	border:1px solid #A85D5D;
+}
+
+#msg.alerta{
+	background-color:#F7FC90;
+	border:1px solid #B1B565;
+}
+.required-highlight{ border:2px solid #ff2222; background-color: #ffe2e2;}
+.flutuante{
+    display: inline-block;
+    padding: 10px 0;
+}
+/*estilo padrão para tabelas*/
+
+table.tabela-simples{
+    border-collapse: separate;
+    border-spacing: 2px 1px;
+    font-size: 16px;
+	width: 100%;
+}
+table.tabela-simples thead *{
+    background-color: #006400;
+    color: #FFFFFF;
+	font-weight: bold;
+    padding: 5px;
+    text-align: center;
+}
+table.tabela-simples tbody *{
+    /*border-left: 1px solid #000000;
+    border-right: 1px solid #000000;*/
+    color: #000000;
+    font-weight: normal;
+    padding: 5px;
+    text-align: center;
+}
+table.tabela-simples tbody tr:hover td{
+	background-color:#fee29e!important;
+	cursor:pointer;
+}
+table.tabela-simples tbody tr td{
+    background-color: #BBEDBB;
+}
+table.tabela-simples tbody tr.alter td{
+	background-color: #D3EDD3;
+}
+table.tabela-simples tbody tr td.actions a{
+    display: block;
+	padding: 0;
+}
+table.tabela-impressao{
+    border-collapse: separate;
+    border-spacing: 2px 1px;
+    font-size: 16px;
+    width: 100%;
+}
+table.tabela-impressao tbody td{
+	border-left: 1px solid #333333;
+	text-align: left;
+    padding: 0 8px;
+}
+table.tabela-impressao tbody td.label{
+	border: none;
+	text-align: right;
+	font-weight: bold;
+}
+table.tabela-impressao tbody td strong{
+	color: #FF0000;
+	font-weight: bold;
+}
+table.tabela-impressao tbody *:hover{
+	background-color: transparent;
+}
+div#overlay{
+	background-color: #000000;
+    display: none;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 666;
+	opacity:0.60;
+	filter: alpha(opacity=60);
+    /* above line works in IE6, IE7, and IE8 */  
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=60)";  
+    /* above line is IE8 only */  	
+}
+div#detalhes{
+    background-color: #FFFFFF;
+    border-color: #888888 #999999 #999999 #888888;
+    border-radius: 8px 8px 8px 8px;
+    border-style: solid;
+    border-width: 1px 3px 3px 1px;
+    box-shadow: 2px 3px 13px #000000;
+    color: #111111;
+    display: none;
+    font-family: "Tahoma","Geneva","Trebuchet MS","Helvetica";
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0 auto;
+    position: fixed;
+    text-align: justify;
+    top: 10%;
+    width: 600px;
+    z-index: 999;
+}
+div#detalhes #faixa-topo{
+    background: url("../imagens/bg-topo-arrastavel.png") repeat-x scroll left top transparent;
+    border-radius: 5px 5px 0 0;
+	cursor: all-scroll;
+    display: block;
+    height: 27px;
+    left: 0;
+    position: relative;
+    top: 0;
+}
+div#detalhes #faixa-topo h2{
+    color: #FFFFFF;
+    font-size: 20px;
+    padding-top: 3px;
+    text-align: center;
+}
+div#detalhes #faixa-topo #link-fechar{
+    background: url("../imagens/btn-fechar.png") no-repeat scroll left top transparent;
+    cursor: pointer;
+    display: block;
+    float: right;
+    height: 20px;
+    margin-top: -15px;
+    width: 25px;
+}
+div#detalhes #detalhes-content{
+    padding: 20px;
+}
+div#detalhes #detalhes-content *{
+    line-height: 20px;
+}
+div#detalhes #detalhes-content p{
+	word-wrap: break-word;
+}
+div#detalhes #frm-edit{    
+	color: #333333;
+    font-size: 16px;
+}
+
+.lista-alunos-projeto{
+	clear: both;
+}
+#detalhes-content p,
+#detalhes-content p *{
+	font-size:14px;
+}
+.lista-alunos-projeto ul li{
+	font-size:16px;
+}
+table.tabela-simples#lista-professores-cadastrados,
+table.tabela-simples#lista-alunos-cadastrados{
+	font-size: 13px;
+}
+/*form#add-professores fieldset{
+	display: none;
+}*/
+/*estilos do menu admin de professores*/
+#menu-professor{
+	display: block;
+	padding-bottom: 30px;
+}
+#menu-professor li{
+	float: left;
+}
+#menu-professor a{
+	padding-left: 17px;
+}
+
+/*estilos das abas da edição de projeto*/
+.aba{ display: none;}
+.aba.first{ display: block;}
+ul#abas-areas{
+    display: block;
+    height: 29px;
+    position: relative;
+}
+ul#abas-areas li{
+    background-color: #DDDDDD;
+	border: 1px solid #006400;
+	border-bottom: none;
+    border-radius: 5px 5px 0 0;
+	cursor: pointer;
+    float: left;
+    padding: 5px;
+	z-index: 555;
+}
+ul#abas-areas li.active {
+    background-color: #FFFFFF !important;
+    box-shadow: 1px -4px 7px -2px #AAAAAA;
+	font-weight: bold;
+	padding: 5px 10px;
+    position: relative;
+    top: 1px;
+    z-index: 999 !important;
+}
+/*fim estilos do menu admin de professores*/
+.ui-draggable.ui-draggable-disabled.ui-state-disabled{
+	opacity: 1.0;
+}
+.disabled {
+    background-color: #DDDDDD !important;
+    border-color: #DDDDDD;
+    color: #888888 !important;
+    cursor: not-allowed !important;
+}
+.visible{
+	display: block!important;
+}
+.oculto{
+    display: none!important;
+    visibility: hidden!important;
+}
+#loading{
+    background: url("../imagens/ajax-loader.gif") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 13px;
+    margin: 0 5px;
+    width: 17px;
+}
+.clear{
+	clear: both;
+}
+.add{ background: url('../imagens/add-icon.png') no-repeat center left transparent; padding-left: 17px!important;}
+.edit{ background: url('../imagens/edit-icon.png') no-repeat center left transparent; padding-left: 17px!important;}
+.remove{ background: url('../imagens/remove-icon.png') no-repeat center left transparent; padding-left: 17px!important;}
+.list{ background: url('../imagens/list-icon.png') no-repeat center left transparent; padding-left: 17px!important;}
+.view{ background: url('../imagens/view-icon.png') no-repeat center left transparent; padding-left: 17px!important;}
